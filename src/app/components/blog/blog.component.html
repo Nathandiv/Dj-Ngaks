@@ -1,0 +1,150 @@
+<div class="pt-16 sm:pt-20 min-h-screen bg-black">
+  <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <!-- Header -->
+    <div class="text-center mb-12 sm:mb-16 animate-fade-in">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 gradient-text">Blog</h1>
+      <p class="text-lg sm:text-xl text-gray-300 max-w-xs sm:max-w-md md:max-w-3xl mx-auto px-4">
+        Insights, stories, and tips from the world of electronic music
+      </p>
+    </div>
+
+    <!-- Featured Posts -->
+    <div class="mb-12 sm:mb-16">
+      <h2 class="text-2xl sm:text-3xl font-bold text-pink-400 mb-6 sm:mb-8 animate-slide-up">Featured Posts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <article *ngFor="let post of featuredPosts" class="featured-post-card cursor-pointer" (click)="openPost(post)">
+          <div class="relative overflow-hidden rounded-2xl">
+            <img [src]="post.image" [alt]="post.title" class="w-full h-48 sm:h-56 md:h-64 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute top-3 sm:top-4 left-3 sm:left-4">
+              <span class="bg-pink-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-semibold">
+                {{ post.category }}
+              </span>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 line-clamp-2">{{ post.title }}</h3>
+              <p class="text-gray-300 mb-3 sm:mb-4 line-clamp-2 text-sm sm:text-base">{{ post.excerpt }}</p>
+              <div class="flex items-center justify-between text-xs sm:text-sm text-gray-400">
+                <span>{{ formatDate(post.date) }}</span>
+                <span>{{ post.readTime }}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="mb-6 sm:mb-8 animate-slide-up">
+      <div class="flex flex-wrap gap-2 justify-center px-4">
+        <button 
+          *ngFor="let category of categories"
+          (click)="selectCategory(category)"
+          class="category-btn text-xs sm:text-sm"
+          [class.active]="selectedCategory === category">
+          {{ category }}
+        </button>
+      </div>
+    </div>
+
+    <!-- All Posts -->
+    <div class="animate-slide-up">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <article *ngFor="let post of filteredPosts" class="post-card cursor-pointer" (click)="openPost(post)">
+          <div class="bg-gray-800/50 rounded-xl overflow-hidden">
+            <div class="relative">
+              <img [src]="post.image" [alt]="post.title" class="w-full h-40 sm:h-48 object-cover">
+              <div class="absolute top-3 sm:top-4 left-3 sm:left-4">
+                <span class="bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                  {{ post.category }}
+                </span>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 line-clamp-2">{{ post.title }}</h3>
+              <p class="text-gray-300 mb-3 sm:mb-4 line-clamp-3 text-sm sm:text-base">{{ post.excerpt }}</p>
+              <div class="flex items-center justify-between text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4">
+                <span>{{ formatDate(post.date) }}</span>
+                <span>{{ post.readTime }}</span>
+              </div>
+              <button class="text-pink-400 hover:text-pink-300 font-semibold transition-colors text-sm sm:text-base">
+                Read More →
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="mt-12 sm:mt-16 text-center bg-gray-800/50 rounded-2xl p-6 sm:p-8 animate-fade-in">
+      <h3 class="text-xl sm:text-2xl font-bold text-pink-400 mb-3 sm:mb-4">Stay Updated</h3>
+      <p class="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 px-4">Subscribe to get the latest blog posts and industry insights delivered to your inbox</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="Enter your email"
+          class="w-full px-4 py-2 sm:py-3 rounded-full bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm sm:text-base">
+        <button class="btn-primary whitespace-nowrap w-full sm:w-auto">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Post Modal -->
+  <div *ngIf="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" (click)="closeModal()">
+    <div class="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden" (click)="$event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="relative">
+        <img [src]="selectedPost?.image" [alt]="selectedPost?.title" class="w-full h-48 sm:h-64 object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <button 
+          (click)="closeModal()"
+          class="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              {{ selectedPost?.category }}
+            </span>
+            <span class="text-gray-300 text-sm">{{ formatDate(selectedPost?.date || '') }}</span>
+            <span class="text-gray-300 text-sm">{{ selectedPost?.readTime }}</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">{{ selectedPost?.title }}</h1>
+          <p class="text-gray-300 text-sm sm:text-base">By {{ selectedPost?.author }}</p>
+        </div>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="p-6 sm:p-8 max-h-[60vh] overflow-y-auto">
+        <div class="prose prose-invert prose-pink max-w-none">
+          <div class="text-gray-300 leading-relaxed text-base sm:text-lg whitespace-pre-line">
+            {{ selectedPost?.content }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="border-t border-gray-800 p-6 sm:p-8">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-pink-600 rounded-full flex items-center justify-center">
+              <span class="text-white font-bold text-lg">DJ</span>
+            </div>
+            <div>
+              <p class="text-white font-semibold">{{ selectedPost?.author }}</p>
+              <p class="text-gray-400 text-sm">Electronic Music Artist & Producer</p>
+            </div>
+          </div>
+          <button 
+            (click)="closeModal()"
+            class="btn-secondary">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

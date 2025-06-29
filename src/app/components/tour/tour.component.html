@@ -1,0 +1,98 @@
+<div class="pt-16 sm:pt-20 min-h-screen bg-black">
+  <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <!-- Header -->
+    <div class="text-center mb-12 sm:mb-16 animate-fade-in">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 gradient-text">Tour Dates</h1>
+      <p class="text-lg sm:text-xl text-gray-300 max-w-xs sm:max-w-md md:max-w-3xl mx-auto px-4">
+        Experience the energy live - catch DJ Ngaks at these upcoming shows
+      </p>
+    </div>
+
+    <!-- Featured Events -->
+    <div class="mb-12 sm:mb-16">
+      <h2 class="text-2xl sm:text-3xl font-bold text-pink-400 mb-6 sm:mb-8 animate-slide-up">Featured Shows</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div *ngFor="let event of featuredEvents" class="featured-event-card">
+          <div class="relative overflow-hidden rounded-2xl h-48 sm:h-56 md:h-64">
+            <img [src]="event.image" [alt]="event.venue" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="absolute top-3 sm:top-4 left-3 sm:left-4">
+              <div class="bg-white/20 backdrop-blur-md rounded-lg p-2 sm:p-3 text-center">
+                <div class="text-lg sm:text-xl md:text-2xl font-bold text-white">{{ getShortDate(event.date).day }}</div>
+                <div class="text-xs sm:text-sm text-pink-200">{{ getShortDate(event.date).month }}</div>
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">{{ event.venue }}</h3>
+              <p class="text-pink-200 mb-3 sm:mb-4 text-sm sm:text-base">{{ event.city }}, {{ event.country }}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs sm:text-sm text-gray-300">{{ formatDate(event.date) }}</span>
+                <button 
+                  *ngIf="!event.soldOut && !isEventPassed(event.date)" 
+                  (click)="openTicketUrl(event.ticketUrl)"
+                  class="btn-primary-small text-xs sm:text-sm">
+                  Get Tickets
+                </button>
+                <span *ngIf="event.soldOut && !isEventPassed(event.date)" class="text-red-400 font-semibold text-xs sm:text-sm">SOLD OUT</span>
+                <span *ngIf="isEventPassed(event.date)" class="text-gray-400 font-semibold text-xs sm:text-sm">EVENT PASSED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- All Events List -->
+    <div class="animate-slide-up">
+      <h2 class="text-2xl sm:text-3xl font-bold text-pink-400 mb-6 sm:mb-8">All Upcoming Shows</h2>
+      <div class="space-y-3 sm:space-y-4">
+        <div *ngFor="let event of upcomingEvents" class="event-card">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 sm:p-6 space-y-4 sm:space-y-0">
+            <div class="flex items-center space-x-4 sm:space-x-6">
+              <!-- Date -->
+              <div class="text-center flex-shrink-0">
+                <div class="text-xl sm:text-2xl font-bold text-pink-400">{{ getShortDate(event.date).day }}</div>
+                <div class="text-xs sm:text-sm text-gray-400">{{ getShortDate(event.date).month }}</div>
+              </div>
+              
+              <!-- Event Info -->
+              <div class="min-w-0 flex-1">
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-1">{{ event.venue }}</h3>
+                <p class="text-sm sm:text-base text-gray-300">{{ event.city }}, {{ event.country }}</p>
+                <p class="text-xs sm:text-sm text-gray-400">{{ formatDate(event.date) }}</p>
+              </div>
+            </div>
+            
+            <!-- Action Button -->
+            <div class="flex items-center justify-between sm:justify-end space-x-3 sm:space-x-4">
+              <span *ngIf="event.featured" class="bg-pink-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-semibold">
+                FEATURED
+              </span>
+              <button 
+                *ngIf="!event.soldOut && !isEventPassed(event.date)" 
+                (click)="openTicketUrl(event.ticketUrl)"
+                class="btn-secondary-small text-xs sm:text-sm">
+                Tickets
+              </button>
+              <span *ngIf="event.soldOut && !isEventPassed(event.date)" class="text-red-400 font-semibold text-xs sm:text-sm">SOLD OUT</span>
+              <span *ngIf="isEventPassed(event.date)" class="text-gray-400 font-semibold text-xs sm:text-sm">EVENT PASSED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="mt-12 sm:mt-16 text-center bg-gray-800/50 rounded-2xl p-6 sm:p-8 animate-fade-in">
+      <h3 class="text-xl sm:text-2xl font-bold text-pink-400 mb-3 sm:mb-4">Never Miss a Show</h3>
+      <p class="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 px-4">Subscribe to get notified about new tour dates and exclusive presale access</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="Enter your email"
+          class="w-full px-4 py-2 sm:py-3 rounded-full bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm sm:text-base">
+        <button class="btn-primary whitespace-nowrap w-full sm:w-auto">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</div>

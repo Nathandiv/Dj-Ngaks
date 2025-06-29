@@ -1,0 +1,11 @@
+.nav-link {
+  @apply text-white hover:text-pink-400 transition-colors duration-300 font-medium;
+}
+
+.nav-link.active {
+  @apply text-pink-400;
+}
+
+.mobile-nav-link {
+  @apply text-white hover:text-pink-400 transition-colors duration-300 py-2 px-4 rounded-lg hover:bg-white/10;
+}

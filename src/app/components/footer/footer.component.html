@@ -1,0 +1,257 @@
+<footer class="bg-black border-t border-gray-800">
+  <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <!-- Brand -->
+      <div class="sm:col-span-2 lg:col-span-2">
+        <div class="flex items-center space-x-2 mb-3 sm:mb-4">
+          <svg class="w-6 h-6 sm:w-8 sm:h-8 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span class="text-xl sm:text-2xl font-bold gradient-text">DJ Ngaks</span>
+        </div>
+        <p class="text-gray-400 mb-4 sm:mb-6 max-w-md text-sm sm:text-base">
+          Electrifying beats that make your heart race and your body move. 
+          Experience the future of electronic music.
+        </p>
+        <div class="flex space-x-3 sm:space-x-4">
+          <a *ngFor="let social of socialLinks" 
+             [href]="social.url" 
+             target="_blank" 
+             class="social-link">
+            <ng-container [ngSwitch]="social.icon">
+              <!-- Instagram -->
+              <svg *ngSwitchCase="'instagram'" class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              
+              <!-- Twitter -->
+              <svg *ngSwitchCase="'twitter'" class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+              
+              <!-- Facebook -->
+              <svg *ngSwitchCase="'facebook'" class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              
+              <!-- TikTok -->
+              <svg *ngSwitchCase="'tiktok'" class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              </svg>
+              
+              <!-- YouTube -->
+              <svg *ngSwitchCase="'youtube'" class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </ng-container>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">Quick Links</h3>
+        <ul class="space-y-1 sm:space-y-2">
+          <li><a routerLink="/" class="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">Home</a></li>
+          <li><a routerLink="/about" class="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">About</a></li>
+          <li><a routerLink="/music" class="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">Music</a></li>
+          <li><a routerLink="/tour" class="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">Tour</a></li>
+          <li><a routerLink="/blog" class="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">Blog</a></li>
+          <li><a routerLink="/contact" class="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h3 class="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">Legal</h3>
+        <ul class="space-y-1 sm:space-y-2">
+          <li>
+            <button 
+              (click)="openPrivacyModal()" 
+              class="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base text-left">
+              Privacy Policy
+            </button>
+          </li>
+          <li>
+            <button 
+              (click)="openTermsModal()" 
+              class="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base text-left">
+              Terms of Service
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
+      <p class="text-gray-400 text-sm sm:text-base">
+        © {{ currentYear }} DJ Ngaks. All rights reserved.
+      </p>
+      <div class="flex items-center space-x-2">
+        <span class="text-gray-400 text-sm sm:text-base">Developed by</span>
+        <a href="https://github.com/Nathandiv" target="_blank" class="text-pink-400 hover:text-pink-300 transition-colors font-medium text-sm sm:text-base">
+          Nathandiv
+        </a>
+        <a href="https://github.com/Nathandiv" target="_blank" class="text-pink-400 hover:text-pink-300 transition-colors">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div *ngIf="isPrivacyModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" (click)="closePrivacyModal()">
+    <div class="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden" (click)="$event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between p-6 border-b border-gray-800">
+        <h2 class="text-2xl font-bold text-white">Privacy Policy</h2>
+        <button 
+          (click)="closePrivacyModal()"
+          class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="p-6 max-h-[70vh] overflow-y-auto">
+        <div class="prose prose-invert max-w-none">
+          <p class="text-gray-300 mb-4">Last updated: January 2024</p>
+          
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">1. Information We Collect</h3>
+          <p class="text-gray-300 mb-4">
+            We collect information you provide directly to us, such as when you create an account, subscribe to our newsletter, 
+            contact us, or use our services. This may include your name, email address, phone number, and any other information 
+            you choose to provide.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">2. How We Use Your Information</h3>
+          <p class="text-gray-300 mb-4">
+            We use the information we collect to provide, maintain, and improve our services, process transactions, 
+            send you technical notices and support messages, communicate with you about products, services, and events, 
+            and protect against fraud and abuse.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">3. Information Sharing</h3>
+          <p class="text-gray-300 mb-4">
+            We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, 
+            except as described in this policy. We may share your information with service providers who assist us in 
+            operating our website and conducting our business.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">4. Data Security</h3>
+          <p class="text-gray-300 mb-4">
+            We implement appropriate security measures to protect your personal information against unauthorized access, 
+            alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">5. Cookies and Tracking</h3>
+          <p class="text-gray-300 mb-4">
+            We use cookies and similar tracking technologies to enhance your experience on our website, analyze usage patterns, 
+            and deliver personalized content. You can control cookie settings through your browser preferences.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">6. Your Rights</h3>
+          <p class="text-gray-300 mb-4">
+            You have the right to access, update, or delete your personal information. You may also opt out of certain 
+            communications from us. To exercise these rights, please contact us using the information provided below.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">7. Contact Us</h3>
+          <p class="text-gray-300">
+            If you have any questions about this Privacy Policy, please contact us at privacy&#64;djngaks.co.za or 
+            +27 82 123 4567.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms of Service Modal -->
+  <div *ngIf="isTermsModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" (click)="closeTermsModal()">
+    <div class="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden" (click)="$event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between p-6 border-b border-gray-800">
+        <h2 class="text-2xl font-bold text-white">Terms of Service</h2>
+        <button 
+          (click)="closeTermsModal()"
+          class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="p-6 max-h-[70vh] overflow-y-auto">
+        <div class="prose prose-invert max-w-none">
+          <p class="text-gray-300 mb-4">Last updated: January 2024</p>
+          
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">1. Acceptance of Terms</h3>
+          <p class="text-gray-300 mb-4">
+            By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement. 
+            If you do not agree to abide by the above, please do not use this service.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">2. Use License</h3>
+          <p class="text-gray-300 mb-4">
+            Permission is granted to temporarily download one copy of the materials on DJ Ngaks' website for personal, 
+            non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+          </p>
+          <ul class="text-gray-300 mb-4 list-disc list-inside">
+            <li>modify or copy the materials</li>
+            <li>use the materials for any commercial purpose or for any public display</li>
+            <li>attempt to reverse engineer any software contained on the website</li>
+            <li>remove any copyright or other proprietary notations from the materials</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">3. Disclaimer</h3>
+          <p class="text-gray-300 mb-4">
+            The materials on DJ Ngaks' website are provided on an 'as is' basis. DJ Ngaks makes no warranties, 
+            expressed or implied, and hereby disclaims and negates all other warranties including without limitation, 
+            implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement 
+            of intellectual property or other violation of rights.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">4. Booking and Events</h3>
+          <p class="text-gray-300 mb-4">
+            All booking inquiries are subject to availability and confirmation. Booking terms, including payment schedules, 
+            cancellation policies, and performance requirements, will be outlined in separate booking agreements. 
+            DJ Ngaks reserves the right to decline any booking request.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">5. Intellectual Property</h3>
+          <p class="text-gray-300 mb-4">
+            All content on this website, including but not limited to music, images, text, and logos, is the property of 
+            DJ Ngaks or used with permission. Unauthorized use of any content is strictly prohibited and may result in 
+            legal action.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">6. Limitations</h3>
+          <p class="text-gray-300 mb-4">
+            In no event shall DJ Ngaks or its suppliers be liable for any damages (including, without limitation, 
+            damages for loss of data or profit, or due to business interruption) arising out of the use or inability 
+            to use the materials on DJ Ngaks' website, even if DJ Ngaks or an authorized representative has been 
+            notified orally or in writing of the possibility of such damage.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">7. Governing Law</h3>
+          <p class="text-gray-300 mb-4">
+            These terms and conditions are governed by and construed in accordance with the laws of South Africa, 
+            and you irrevocably submit to the exclusive jurisdiction of the courts in that state or location.
+          </p>
+
+          <h3 class="text-xl font-semibold text-pink-400 mb-3">8. Contact Information</h3>
+          <p class="text-gray-300">
+            If you have any questions about these Terms of Service, please contact us at legal&#64;djngaks.co.za or 
+            +27 82 123 4567.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

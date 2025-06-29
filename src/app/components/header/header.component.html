@@ -1,0 +1,46 @@
+<header class="fixed top-0 w-full z-50 glass-effect">
+  <nav class="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <span class="text-lg sm:text-xl md:text-2xl font-bold gradient-text">DJ Ngaks</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+        <a routerLink="/" class="nav-link text-sm xl:text-base">Home</a>
+        <a routerLink="/about" class="nav-link text-sm xl:text-base">About</a>
+        <a routerLink="/music" class="nav-link text-sm xl:text-base">Music</a>
+        <a routerLink="/tour" class="nav-link text-sm xl:text-base">Tour</a>
+        <a routerLink="/blog" class="nav-link text-sm xl:text-base">Blog</a>
+        <a routerLink="/contact" class="nav-link text-sm xl:text-base">Contact</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        class="lg:hidden text-white focus:outline-none p-2"
+        (click)="toggleMenu()">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                [attr.d]="isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'">
+          </path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="lg:hidden mt-4 pb-4" [class.hidden]="!isMenuOpen">
+      <div class="flex flex-col space-y-3">
+        <a routerLink="/" class="mobile-nav-link text-base" (click)="toggleMenu()">Home</a>
+        <a routerLink="/about" class="mobile-nav-link text-base" (click)="toggleMenu()">About</a>
+        <a routerLink="/music" class="mobile-nav-link text-base" (click)="toggleMenu()">Music</a>
+        <a routerLink="/tour" class="mobile-nav-link text-base" (click)="toggleMenu()">Tour</a>
+        <a routerLink="/blog" class="mobile-nav-link text-base" (click)="toggleMenu()">Blog</a>
+        <a routerLink="/contact" class="mobile-nav-link text-base" (click)="toggleMenu()">Contact</a>
+      </div>
+    </div>
+  </nav>
+</header>

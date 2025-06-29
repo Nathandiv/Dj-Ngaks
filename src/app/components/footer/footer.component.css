@@ -1,0 +1,23 @@
+.social-link {
+  @apply w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 
+         hover:bg-pink-500 hover:text-white transition-all duration-300 hover:scale-110;
+}
+
+/* Custom scrollbar for modal content */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #f472b6;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #ec4899;
+}

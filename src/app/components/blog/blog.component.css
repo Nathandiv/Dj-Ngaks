@@ -1,0 +1,62 @@
+.featured-post-card {
+  @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-pink-500/20;
+}
+
+.post-card {
+  @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-pink-500/20;
+}
+
+.category-btn {
+  @apply px-4 py-2 rounded-full border border-gray-600 text-gray-300 
+         transition-all duration-300 hover:border-pink-500 hover:text-pink-400;
+}
+
+.category-btn.active {
+  @apply bg-pink-500 text-white border-pink-500;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Modal styles */
+.prose-invert {
+  color: #d1d5db;
+}
+
+.prose-pink a {
+  color: #f472b6;
+}
+
+.prose-pink a:hover {
+  color: #ec4899;
+}
+
+/* Custom scrollbar for modal content */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #f472b6;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #ec4899;
+}

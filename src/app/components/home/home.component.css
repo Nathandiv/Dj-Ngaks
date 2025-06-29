@@ -1,0 +1,11 @@
+.carousel-container {
+  @apply relative w-full h-full;
+}
+
+.carousel-slide {
+  @apply absolute inset-0 opacity-0 transition-opacity duration-1000;
+}
+
+.carousel-slide.active {
+  @apply opacity-100;
+}

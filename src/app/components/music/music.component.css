@@ -1,0 +1,31 @@
+.music-card {
+  @apply transform transition-all duration-300 hover:scale-105;
+}
+
+.video-card {
+  @apply transform transition-all duration-300 hover:scale-[1.02];
+}
+
+.play-button-small {
+  @apply absolute top-4 right-4 w-10 h-10 bg-pink-500 rounded-full 
+         flex items-center justify-center text-white hover:bg-pink-600 
+         transition-all duration-300 hover:scale-110 opacity-0 hover:opacity-100;
+}
+
+.play-button-small.playing {
+  @apply opacity-100 bg-pink-600;
+}
+
+.music-card:hover .play-button-small {
+  @apply opacity-100;
+}
+
+.platform-card {
+  @apply flex flex-col items-center p-6 bg-gray-800/50 rounded-xl
+         transform transition-all duration-300 hover:scale-105 hover:bg-gray-800/70
+         text-white hover:text-pink-400;
+}
+
+.platform-icon {
+  @apply w-12 h-12 mb-3 flex items-center justify-center;
+}

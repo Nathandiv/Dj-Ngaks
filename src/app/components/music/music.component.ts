@@ -1,0 +1,171 @@
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
+interface Track {
+  id: number;
+  title: string;
+  artist: string;
+  genre: string;
+  duration: string;
+  cover: string;
+  audioUrl: string;
+  featured: boolean;
+}
+
+interface Video {
+  id: number;
+  title: string;
+  description: string;
+  type: string;
+  duration: string;
+  embedUrl: SafeResourceUrl;
+}
+
+@Component({
+  selector: 'app-music',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './music.component.html',
+  styleUrl: './music.component.css'
+})
+export class MusicComponent {
+  @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
+  
+  public currentlyPlaying: Track | null = null;
+  private currentPlayPromise: Promise<void> | null = null;
+
+  tracks: Track[] = [
+    {
+      id: 1,
+      title: 'Neon Lights',
+      artist: 'DJ Ngaks',
+      genre: 'Progressive House',
+      duration: '4:32',
+      cover: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=1',
+      audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav',
+      featured: true
+    },
+    {
+      id: 2,
+      title: 'Electric Dreams',
+      artist: 'DJ Ngaks ft. Stellar',
+      genre: 'Melodic Techno',
+      duration: '5:18',
+      cover: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=1',
+      audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-04.wav',
+      featured: true
+    },
+    {
+      id: 3,
+      title: 'Midnight Pulse',
+      artist: 'DJ Ngaks',
+      genre: 'Deep House',
+      duration: '3:45',
+      cover: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=1',
+      audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-03.wav',
+      featured: true
+    }
+  ];
+
+  platforms = [
+    { name: 'Spotify', url: 'https://spotify.com', icon: 'spotify' },
+    { name: 'Apple Music', url: 'https://music.apple.com', icon: 'apple' },
+    { name: 'YouTube Music', url: 'https://music.youtube.com', icon: 'youtube' }
+  ];
+
+  videos: Video[] = [
+    {
+      id: 1,
+      title: 'DJ Ngaks - Live at Ultra Music Festival 2024',
+      description: 'Experience the electrifying performance that had the crowd dancing all night long at one of the world\'s biggest electronic music festivals.',
+      type: 'Live Performance',
+      duration: '45:30',
+      embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/dQw4w9WgXcQ')
+    },
+    {
+      id: 2,
+      title: 'Behind the Decks: DJ Ngaks Interview',
+      description: 'An intimate conversation about her journey from underground clubs to international stardom, creative process, and what drives her passion for electronic music.',
+      type: 'Interview',
+      duration: '28:15',
+      embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/jNQXAC9IVRw')
+    }
+  ];
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  get featuredTracks() {
+    return this.tracks.filter(track => track.featured);
+  }
+
+  public async playTrack(track: Track) {
+    const audio = this.audioPlayer.nativeElement;
+    
+    // Wait for any existing play promise to resolve before proceeding
+    if (this.currentPlayPromise) {
+      try {
+        await this.currentPlayPromise;
+      } catch (error) {
+        // Ignore errors from previous play attempts
+      }
+    }
+    
+    if (this.currentlyPlaying?.id === track.id) {
+      // If same track is playing, check if it's actually playing or paused
+      if (!audio.paused) {
+        this.pauseTrack();
+      } else {
+        // Resume playback
+        try {
+          this.currentPlayPromise = audio.play();
+          await this.currentPlayPromise;
+        } catch (error) {
+          console.error('Error resuming audio:', error);
+          this.currentlyPlaying = null;
+        } finally {
+          this.currentPlayPromise = null;
+        }
+      }
+    } else {
+      // Play new track - ensure clean state
+      audio.pause();
+      audio.src = track.audioUrl;
+      audio.load(); // Reset the audio element to a clean state
+      
+      try {
+        this.currentPlayPromise = audio.play();
+        await this.currentPlayPromise;
+        this.currentlyPlaying = track;
+      } catch (error) {
+        console.error('Error playing audio:', error);
+        // Fallback: just show visual feedback without actual audio
+        this.currentlyPlaying = track;
+        setTimeout(() => {
+          this.currentlyPlaying = null;
+        }, 3000);
+      } finally {
+        this.currentPlayPromise = null;
+      }
+    }
+  }
+
+  pauseTrack() {
+    if (this.audioPlayer) {
+      this.audioPlayer.nativeElement.pause();
+    }
+    this.currentlyPlaying = null;
+  }
+
+  onTrackEnded() {
+    this.currentlyPlaying = null;
+  }
+
+  onTrackLoading() {
+    // Track is loading
+  }
+
+  onTrackReady() {
+    // Track is ready to play
+  }
+}
