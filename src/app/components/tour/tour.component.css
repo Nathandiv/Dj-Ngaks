@@ -1,9 +1,8 @@
 .featured-event-card {
   @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-pink-500/20;
 }
-
 .event-card {
-  @apply bg-gray-800/50 rounded-xl transform transition-all duration-300 hover:bg-gray-800/70 hover:scale-[1.02];
+  @apply relative rounded-xl border-2 border-pink-500 transform transition-all duration-300 hover:bg-gray-800/70 hover:scale-[1.02];
 }
 
 .btn-primary-small {
