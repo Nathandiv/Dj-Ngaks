@@ -38,34 +38,34 @@ export class MusicComponent {
   tracks: Track[] = [
     {
       id: 1,
-      title: 'Neon Lights',
-      artist: 'DJ Ngaks',
-      genre: 'Progressive House',
+      title: 'Busisa',
+      artist: 'DJ Ngaksfeat. Soulful G',
+      genre: 'Amapiono',
       duration: '4:32',
       cover: 'https://i.pinimg.com/736x/28/b2/2d/28b22d55f559db540b64abf57afd7aa2.jpg',
-      audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'Electric Dreams',
-      artist: 'DJ Ngaks ft. Stellar',
-      genre: 'Melodic Techno',
-      duration: '5:18',
-      cover: 'https://i.pinimg.com/736x/28/b2/2d/28b22d55f559db540b64abf57afd7aa2.jpg',
-      audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-04.wav',
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'Midnight Pulse',
-      artist: 'DJ Ngaks',
-      genre: 'Deep House',
-      duration: '3:45',
-      cover: 'https://i.pinimg.com/736x/28/b2/2d/28b22d55f559db540b64abf57afd7aa2.jpg',
-      audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-03.wav',
+      audioUrl: '',
       featured: true
     }
+    // {
+    //   id: 2,
+    //   title: 'Electric Dreams',
+    //   artist: 'DJ Ngaks ft. Stellar',
+    //   genre: 'Melodic Techno',
+    //   duration: '5:18',
+    //   cover: 'https://i.pinimg.com/736x/28/b2/2d/28b22d55f559db540b64abf57afd7aa2.jpg',
+    //   audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-04.wav',
+    //   featured: true
+    // },
+    // {
+    //   id: 3,
+    //   title: 'Midnight Pulse',
+    //   artist: 'DJ Ngaks',
+    //   genre: 'Deep House',
+    //   duration: '3:45',
+    //   cover: 'https://i.pinimg.com/736x/28/b2/2d/28b22d55f559db540b64abf57afd7aa2.jpg',
+    //   audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-03.wav',
+    //   featured: true
+    // }
   ];
 
   platforms = [
