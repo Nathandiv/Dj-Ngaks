@@ -42,7 +42,7 @@ export class MusicComponent {
       artist: 'DJ Ngaks',
       genre: 'Progressive House',
       duration: '4:32',
-      cover: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=1',
+      cover: 'https://i.pinimg.com/736x/28/b2/2d/28b22d55f559db540b64abf57afd7aa2.jpg',
       audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav',
       featured: true
     },
@@ -52,7 +52,7 @@ export class MusicComponent {
       artist: 'DJ Ngaks ft. Stellar',
       genre: 'Melodic Techno',
       duration: '5:18',
-      cover: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=1',
+      cover: 'https://i.pinimg.com/736x/28/b2/2d/28b22d55f559db540b64abf57afd7aa2.jpg',
       audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-04.wav',
       featured: true
     },
@@ -62,7 +62,7 @@ export class MusicComponent {
       artist: 'DJ Ngaks',
       genre: 'Deep House',
       duration: '3:45',
-      cover: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&dpr=1',
+      cover: 'https://i.pinimg.com/736x/28/b2/2d/28b22d55f559db540b64abf57afd7aa2.jpg',
       audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-03.wav',
       featured: true
     }
@@ -81,7 +81,7 @@ export class MusicComponent {
       description: 'Experience the electrifying performance that had the crowd dancing all night long at one of the world\'s biggest electronic music festivals.',
       type: 'Live Performance',
       duration: '45:30',
-      embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/dQw4w9WgXcQ')
+embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/ePojfM9cUeE')
     },
     {
       id: 2,
@@ -89,7 +89,15 @@ export class MusicComponent {
       description: 'An intimate conversation about her journey from underground clubs to international stardom, creative process, and what drives her passion for electronic music.',
       type: 'Interview',
       duration: '28:15',
-      embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/jNQXAC9IVRw')
+embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/vZrTO3Z8c0s')
+    },
+      {
+      id: 3,
+      title: 'Behind the Decks: DJ Ngaks Interview',
+      description: 'An intimate conversation about her journey from underground clubs to international stardom, creative process, and what drives her passion for electronic music.',
+      type: 'Interview',
+      duration: '28:15',
+embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/haHWdjCUG0Q')
     }
   ];
 
