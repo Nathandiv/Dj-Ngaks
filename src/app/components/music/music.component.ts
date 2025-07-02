@@ -69,9 +69,9 @@ export class MusicComponent {
   ];
 
   platforms = [
-    { name: 'Spotify', url: 'https://spotify.com', icon: 'spotify' },
-    { name: 'Apple Music', url: 'https://music.apple.com', icon: 'apple' },
-    { name: 'YouTube Music', url: 'https://music.youtube.com', icon: 'youtube' }
+    { name: 'Spotify', url: 'https://open.spotify.com/track/0KV6JKvDvwMfB5OgzOaFPc?si=61cc30fe32a34c94', icon: 'spotify' },
+    { name: 'Apple Music', url: 'https://music.apple.com/za/artist/dj-ngakz/1817381595', icon: 'apple' },
+    { name: 'YouTube Music', url: 'https://music.youtube.com/watch?v=UeQ25tH5k84', icon: 'youtube' }
   ];
 
   videos: Video[] = [
