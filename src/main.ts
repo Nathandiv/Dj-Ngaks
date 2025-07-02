@@ -4,13 +4,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { routes } from './app/app.routes';
-import { HeaderComponent } from './app/components/header/header.component';
+import { NavbarComponent } from './app/components/navbar/navbar.component';
 import { FooterComponent } from './app/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [CommonModule, RouterOutlet, NavbarComponent, FooterComponent],
   template: `
     <div class="min-h-screen bg-black">
       <app-header></app-header>
