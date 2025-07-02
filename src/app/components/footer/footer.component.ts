@@ -15,11 +15,11 @@ export class FooterComponent {
   isTermsModalOpen = false;
   
   socialLinks = [
-    { name: 'Instagram', url: 'https://instagram.com/djngaks', icon: 'instagram' },
+    { name: 'Instagram', url: 'https://www.instagram.com/mpho_ngakz/?igsh=MWpyYXczZmlhcmppdw%3D%3D#', icon: 'instagram' },
     { name: 'Twitter', url: 'https://twitter.com/djngaks', icon: 'twitter' },
     { name: 'Facebook', url: 'https://facebook.com/djngaks', icon: 'facebook' },
-    { name: 'TikTok', url: 'https://tiktok.com/@djngaks', icon: 'tiktok' },
-    { name: 'YouTube', url: 'https://youtube.com/djngaks', icon: 'youtube' }
+    { name: 'TikTok', url: 'https://www.tiktok.com/@mpho_ngaks/video/7476084071148391687', icon: 'tiktok' },
+    { name: 'YouTube', url: 'https://www.youtube.com/watch?v=UeQ25tH5k84&list=RDUeQ25tH5k84&start_radio=1', icon: 'youtube' }
   ];
 
   openPrivacyModal() {
