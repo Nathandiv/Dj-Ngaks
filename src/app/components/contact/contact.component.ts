@@ -24,10 +24,10 @@ export class ContactComponent {
   };
 
   socialLinks = [
-    { name: 'Instagram', url: 'https://instagram.com/djngaks', icon: 'instagram' },
-    { name: 'Twitter', url: 'https://twitter.com/djngaks', icon: 'twitter' },
-    { name: 'TikTok', url: 'https://tiktok.com/@djngaks', icon: 'tiktok' },
-    { name: 'YouTube', url: 'https://youtube.com/djngaks', icon: 'youtube' }
+    { name: 'Instagram', url: 'https://www.instagram.com/mpho_ngakz/?igsh=MWpyYXczZmlhcmppdw%3D%3D#', icon: 'instagram' },
+    // { name: 'Twitter', url: 'https://twitter.com/djngaks', icon: 'twitter' },
+    { name: 'TikTok', url: 'https://www.tiktok.com/@mpho_ngaks/video/7476084071148391687', icon: 'tiktok' },
+    { name: 'YouTube', url: 'https://www.youtube.com/results?search_query=busisa+dj+ngakz', icon: 'youtube' }
   ];
 
   onSubmit() {
