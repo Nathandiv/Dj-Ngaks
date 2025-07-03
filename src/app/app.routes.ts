@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'music', component: MusicComponent },
   { path: 'tour', component: TourComponent },
-  { path: 'blog', component: BlogComponent },
+  // { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
   { path: '**', redirectTo: '' }
 ];
