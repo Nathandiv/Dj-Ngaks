@@ -77,26 +77,26 @@ export class MusicComponent {
   videos: Video[] = [
     {
       id: 1,
-      title: 'DJ Ngaks - Live at Ultra Music Festival 2024',
-      description: 'Experience the electrifying performance that had the crowd dancing all night long at one of the world\'s biggest electronic music festivals.',
+      title: 'encanews | [LIVE PERFORMANCE] 14-year-old DJ Ngaks',
+      description: 'Watch the powerful live performance of 14-year-old DJ Ngaks that wowed the crowd and showcased her rising talent on the big stage.',
       type: 'Live Performance',
-      duration: '45:30',
+      duration: '2:36',
 embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/ePojfM9cUeE')
     },
     {
       id: 2,
-      title: 'Behind the Decks: DJ Ngaks Interview',
-      description: 'An intimate conversation about her journey from underground clubs to international stardom, creative process, and what drives her passion for electronic music.',
-      type: 'Interview',
-      duration: '28:15',
+      title: 'Youth Month: DJ Ngaks Shares Her Journey',
+      description: 'A powerful Youth Month feature where DJ Ngaks opens up about her path, challenges, and dreams.',
+      type: 'Feature Story',
+      duration: '5:32',
 embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/vZrTO3Z8c0s')
     },
       {
       id: 3,
-      title: 'Behind the Decks: DJ Ngaks Interview',
-      description: 'An intimate conversation about her journey from underground clubs to international stardom, creative process, and what drives her passion for electronic music.',
+       title: 'DJ Ngaks: Taking South Africa by Storm',
+      description: 'SABC News interviews 14-year-old DJ Ngaks, the rising sensation redefining the local music scene.',
       type: 'Interview',
-      duration: '28:15',
+      duration: '6:54',
 embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/haHWdjCUG0Q')
     }
   ];
