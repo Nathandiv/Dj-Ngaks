@@ -17,7 +17,7 @@ export class AboutComponent {
   ];
 
   achievements = [
-    'Featured at Ultra Music Festival',
+    ' Collaborated with local talents including Soulful G and Tshego AMG',
     'Resident DJ at Ibiza\'s top clubs',
     'Collaborated with Grammy-winning artists',
     'Headlined major EDM festivals worldwide'
