@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 interface TourEvent {
   date: string;
@@ -147,5 +148,40 @@ export class TourComponent {
 
   get regularEvents() {
     return this.upcomingEvents.filter(event => !event.featured);
+  }
+
+  success = false;
+
+  async submitSubscribe(form: NgForm) {
+    if (form.invalid) return;
+
+    const formData = new FormData();
+    formData.append('access_key', '18155a87-df5c-4465-b923-8cb64eb3e1b3');
+    formData.append('subject', 'New Subscriber');
+    formData.append('from_name', 'Website Newsletter');
+
+    // Append email from form
+    formData.append('email', form.value.email);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+      console.log('Subscribe response:', result);
+
+      if (result.success) {
+        this.success = true;
+        form.resetForm();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert(`❌ Failed to subscribe: ${result.message}`);
+      }
+    } catch (error) {
+      console.error('Subscribe error:', error);
+      alert('Network error. Please try again.');
+    }
   }
 }
