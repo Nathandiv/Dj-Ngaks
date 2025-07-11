@@ -17,9 +17,10 @@ export class AboutComponent {
   ];
 
   achievements = [
-    ' Collaborated with local talents including Soulful G and Tshego AMG',
-    'Resident DJ at Ibiza\'s top clubs',
-    'Collaborated with Grammy-winning artists',
-    'Headlined major EDM festivals worldwide'
+    'Visionary brand-builder, not just DJing',
+    'Winner of the Jack Skelly Trophy for Loyalty and Honesty',
+    'Collaborated with local talents including Soulful G and Tshego AMG',
+    'Inspires a nationwide youth movement'
+
   ];
 }
