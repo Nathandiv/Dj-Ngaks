@@ -10,16 +10,17 @@ import { CommonModule } from '@angular/common';
 })
 export class AboutComponent {
   stats = [
-    { label: 'Years Experience', value: '4+' },
-    { label: 'Provinces Toured', value: '15+' },
-    { label: 'Tracks Released', value: '10+' },
+    { label: 'Years Experience', value: '5+' },
+    { label: 'Provinces Toured', value: '7+' },
+    { label: 'Tracks Released', value: '8+' },
     { label: 'Followers', value: '1M+' }
   ];
 
   achievements = [
-    'Featured at Ultra Music Festival',
-    'Resident DJ at Ibiza\'s top clubs',
-    'Collaborated with Grammy-winning artists',
-    'Headlined major EDM festivals worldwide'
+    'Visionary brand-builder, not just DJing',
+    'Winner of the Jack Skelly Trophy for Loyalty and Honesty',
+    'Collaborated with local talents including Soulful G and Tshego AMG',
+    'Inspires a nationwide youth movement'
+
   ];
 }
