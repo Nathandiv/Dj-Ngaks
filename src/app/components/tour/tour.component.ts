@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 interface TourEvent {
   date: string;
@@ -17,7 +17,7 @@ interface TourEvent {
 @Component({
   selector: 'app-tour',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './tour.component.html',
   styleUrl: './tour.component.css'
 })
@@ -149,8 +149,7 @@ export class TourComponent {
   get regularEvents() {
     return this.upcomingEvents.filter(event => !event.featured);
   }
-
-  success = false;
+ success = false;
 
   async submitSubscribe(form: NgForm) {
     if (form.invalid) return;
@@ -159,8 +158,6 @@ export class TourComponent {
     formData.append('access_key', '18155a87-df5c-4465-b923-8cb64eb3e1b3');
     formData.append('subject', 'New Subscriber');
     formData.append('from_name', 'Website Newsletter');
-
-    // Append email from form
     formData.append('email', form.value.email);
 
     try {
@@ -177,11 +174,12 @@ export class TourComponent {
         form.resetForm();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        alert(`❌ Failed to subscribe: ${result.message}`);
+        alert(`Failed to subscribe: ${result.message}`);
       }
     } catch (error) {
       console.error('Subscribe error:', error);
       alert('Network error. Please try again.');
     }
   }
+ 
 }
