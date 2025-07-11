@@ -14,131 +14,148 @@
   <div class=" rounded-2xl p-6 sm:p-8">
     <h2 class="text-2xl sm:text-3xl font-bold text-pink-400 mb-6 sm:mb-8">Book DJ Ngaks</h2>
 
-    <form 
-      action="https://api.web3forms.com/submit" 
-      method="POST" 
-      class="space-y-4 sm:space-y-6 needs-validation"
-      novalidate
+   <!-- ✅ Success message -->
+<div
+  *ngIf="success"
+  class=" text-pink-500 p-4 rounded-md mb-6 text-center text-sm"
+>
+  ✅ Thank you! Your booking request was sent successfully.
+</div>
+
+<form
+  #bookingFormRef="ngForm"
+  (ngSubmit)="submitBooking(bookingFormRef)"
+  class="space-y-4 sm:space-y-6"
+  novalidate
+>
+  <!-- Hidden access key -->
+  <input
+    type="hidden"
+    name="access_key"
+    value="18155a87-df5c-4465-b923-8cb64eb3e1b3"
+  />
+
+  <!-- Name -->
+  <div>
+    <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      ngModel
+      required
+      class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
+      placeholder="Enter your full name"
+    />
+    <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Name is required</p>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      ngModel
+      required
+      class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
+      placeholder="Enter your email address"
+    />
+    <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Valid email is required</p>
+  </div>
+
+  <!-- Phone -->
+  <div>
+    <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      ngModel
+      required
+      pattern="[0-9+\s\-]{7,15}"
+      class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
+      placeholder="Enter your phone number"
+    />
+    <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Enter a valid phone number</p>
+  </div>
+
+  <!-- Event Type -->
+  <div>
+    <label for="eventType" class="block text-sm font-medium text-gray-300 mb-2">Event Type *</label>
+    <select
+      id="eventType"
+      name="eventType"
+      ngModel
+      required
+      class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
     >
-      <!-- Hidden access key -->
-      <input
-        type="hidden"
-        name="access_key"
-        value="18155a87-df5c-4465-b923-8cb64eb3e1b3"
-      />
+      <option value="">Select event type</option>
+      <option value="club">Club Night</option>
+      <option value="festival">Festival</option>
+      <option value="private">Private Party</option>
+      <option value="wedding">Wedding</option>
+      <option value="corporate">Corporate Event</option>
+      <option value="other">Other</option>
+    </select>
+    <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Please select an event type</p>
+  </div>
 
-      <!-- Name -->
-      <div>
-        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name"
-          required
-          class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
-          placeholder="Enter your full name"
-        >
-        <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Name is required</p>
-      </div>
+  <!-- Event Date -->
+  <div>
+    <label for="eventDate" class="block text-sm font-medium text-gray-300 mb-2">Event Date *</label>
+    <input
+      type="date"
+      id="eventDate"
+      name="eventDate"
+      ngModel
+      required
+      class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
+    />
+    <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Event date is required</p>
+  </div>
 
-      <!-- Email -->
-      <div>
-        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
-        <input 
-          type="email" 
-          id="email" 
-          name="email"
-          required
-          class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
-          placeholder="Enter your email address"
-        >
-        <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Valid email is required</p>
-      </div>
+  <!-- Location -->
+  <div>
+    <label for="location" class="block text-sm font-medium text-gray-300 mb-2">Event Location *</label>
+    <input
+      type="text"
+      id="location"
+      name="location"
+      ngModel
+      required
+      class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
+      placeholder="City, Province"
+    />
+    <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Event location is required</p>
+  </div>
 
-      <!-- Phone -->
-      <div>
-        <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
-        <input 
-          type="tel" 
-          id="phone"
-          required 
-          name="phone"
-          pattern="[0-9+\s\-]{7,15}"
-          class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
-          placeholder="Enter your phone number"
-        >
-        <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Enter a valid phone number</p>
-      </div>
+  <!-- Message -->
+  <div>
+    <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message *</label>
+    <textarea
+      id="message"
+      name="message"
+      ngModel
+      required
+      rows="5"
+      class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors resize-vertical"
+      placeholder="Tell us more about your event, expected attendance, music preferences, and any special requirements..."
+    ></textarea>
+    <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Message is required</p>
+  </div>
 
-      <!-- Event Type -->
-      <div>
-        <label for="eventType" class="block text-sm font-medium text-gray-300 mb-2">Event Type *</label>
-        <select 
-          id="eventType" 
-          name="eventType"
-          required
-          class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
-        >
-          <option value="">Select event type</option>
-          <option value="club">Club Night</option>
-          <option value="festival">Festival</option>
-          <option value="private">Private Party</option>
-          <option value="wedding">Wedding</option>
-          <option value="corporate">Corporate Event</option>
-          <option value="other">Other</option>
-        </select>
-        <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Please select an event type</p>
-      </div>
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    [disabled]="bookingFormRef.invalid"
+    class="w-full btn-primary py-3 sm:py-4 text-base sm:text-lg font-semibold"
+  >
+    Send Booking Request
+  </button>
+</form>
 
-      <!-- Event Date -->
-      <div>
-        <label for="eventDate" class="block text-sm font-medium text-gray-300 mb-2">Event Date *</label>
-        <input 
-          type="date" 
-          id="eventDate" 
-          name="eventDate"
-          required
-          class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
-        >
-        <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Event date is required</p>
-      </div>
-
-      <!-- Location -->
-      <div>
-        <label for="location" class="block text-sm font-medium text-gray-300 mb-2">Event Location *</label>
-        <input 
-          type="text" 
-          id="location" 
-          name="location"
-          required
-          class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors"
-          placeholder="City, Province"
-        >
-        <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Event location is required</p>
-      </div>
-
-      <!-- Message -->
-      <div>
-        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message *</label>
-        <textarea 
-          id="message" 
-          name="message"
-          required
-          rows="5"
-          class="peer w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors resize-vertical"
-          placeholder="Tell us more about your event, expected attendance, music preferences, and any special requirements..."
-        ></textarea>
-        <p class="mt-1 text-sm text-pink-500 invisible peer-invalid:visible">Message is required</p>
-      </div>
-
-      <!-- Submit Button -->
-      <button 
-        type="submit" 
-        class="w-full btn-primary py-3 sm:py-4 text-base sm:text-lg font-semibold"
-      >
-        Send Booking Request
-      </button>
-    </form>
   </div>
 </div>
 

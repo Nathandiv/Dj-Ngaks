@@ -86,32 +86,46 @@
     <div class="mt-12 sm:mt-16 text-center  rounded-2xl p-6 sm:p-8 animate-fade-in">
       <h3 class="text-xl sm:text-2xl font-bold text-pink-400 mb-3 sm:mb-4">Never Miss a Show</h3>
       <p class="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 px-4">Subscribe to get notified about new tour dates and exclusive presale access</p>
-     <form 
-  action="https://api.web3forms.com/submit" 
-  method="POST" 
+
+      <!-- Success message -->
+<div
+  *ngIf="success"
+  class=" text-pink-500 p-3 rounded-md mb-4 text-center text-sm"
+>
+  ✅ You’ve successfully subscribed!
+</div>
+
+<!-- Angular form -->
+<form
+  #subscribeFormRef="ngForm"
+  (ngSubmit)="submitSubscribe(subscribeFormRef)"
   class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 max-w-md mx-auto"
+  novalidate
 >
   <input
     type="hidden"
     name="access_key"
     value="18155a87-df5c-4465-b923-8cb64eb3e1b3"
   />
-  
-  <input 
-    type="email" 
+
+  <input
+    type="email"
     name="email"
-    placeholder="Enter your email"
+    ngModel
     required
+    placeholder="Enter your email"
     class="w-full px-4 py-2 sm:py-3 rounded-full bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm sm:text-base"
   />
-  
-  <button 
+
+  <button
     type="submit"
     class="btn-primary whitespace-nowrap w-full sm:w-auto"
+    [disabled]="subscribeFormRef.invalid"
   >
     Subscribe
   </button>
 </form>
+
 
     </div>
   </div>
